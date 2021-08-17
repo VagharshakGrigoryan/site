@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <title> Employes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
+</head>
+<body>
+
+<header th:insert="bloks/header :: header"></header>
+
+<div class="container mt-5">
+    <h1><strong>Employes</strong></h1>
+    <div th:each="el : ${employes}" class="alert alert-info mt-2">
+       Name :  <h3 th:text="${el.name}"></h3>
+       Surname : <p th:text="${el.surname}"></p>
+        <a th:href="'/employe/' + ${el.id}" class="btn btn-warning">Detals</a>
+    </div>
+</div>
+<div th:insert="bloks/footer :: footer"></div>
+</body>
+</html>

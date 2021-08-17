@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
+</head>
+<body>
+<header th:insert="bloks/header :: header"></header>
+<div class="container mt-5">
+    <h1 th:text="${title}"></h1>
+    <p>The Employee register is where you store all important information
+        about your employees, such as name, address, telephone numbers,
+        job title etc. In addition, you can also register
+        information about the employee's qualifications, absences,
+        activities, documents, notes and insert pictures of your employees.</p>
+
+</div>
+<div th:insert="bloks/footer :: footer"></div>
+</body>
+</html>

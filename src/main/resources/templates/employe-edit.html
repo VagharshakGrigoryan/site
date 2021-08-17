@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <title> Edit Employe </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
+</head>
+<body>
+
+<header th:insert="bloks/header :: header"></header>
+
+<div class="container mt-5 mb-xxl-5">
+    <h1 style="text-align: center">Edit Company</h1>
+    <div th:each="el : ${emp}" >
+        <form method="post">
+            <label>
+                <input type="text" name="name" th:value="${el.name}" placeholder="add name"
+                       class="form-control" size="200">
+            </label>
+            <br>
+            <br>
+            <label>
+                <input type="text" name="surname" th:value="${el.surname}" placeholder="add name"
+                       class="form-control" size="200">
+            </label>
+            <br>
+            <br>
+            <label>
+                <input type="text" name="email" th:value="${el.email}" placeholder="add email"
+                       class="form-control" size="200">
+            </label>
+            <br>
+            <br>
+            <label>
+                <label>
+                    <input type="text" name="phoneNumber" th:value="${el.phoneNumber}"
+                           placeholder="phone number" class="form-control">
+                </label>
+
+            <br>
+            <br>
+            <label>
+                <input type="number" name="salary" th:value="${el.salary}" placeholder="add salary"
+                       class="form-control" size="200">
+            </label>
+            <br>
+            <br>
+                <label>
+                    <input  style="text-align: center" type="text" name="position" th:value="${el.position}" placeholder="add position"
+                           class="form-control" >
+                </label>
+                <br>
+                <br>
+                <label>
+                    Working place: <select name="company_id" th:value="${el.company_id}" placeholder="add position"
+                                           class="form-control" >
+                        <option >Adobe, Inc.</option>
+                        <option>Google</option>
+                        <option>YouTube</option>
+                        <option>Apple</option>
+                        <option>Xiomi</option>
+                        <option>ItSpace</option>
+                    </select>
+                </label>
+                <br>
+                <br>
+            <button style="text-align: center" type="submit" class="btn btn-success"> Edit</button>
+            </label>
+        </form>
+    </div>
+</div>
+
+<div th:insert="bloks/footer :: footer"></div>
+
+</body>
+</html>
