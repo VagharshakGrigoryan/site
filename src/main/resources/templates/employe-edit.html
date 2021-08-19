@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title> Edit Employe </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -54,15 +54,14 @@
                 <br>
                 <br>
                 <label>
-                    Working place: <select name="company_id" th:value="${el.company_id}" placeholder="add position"
-                                           class="form-control" >
-                        <option >Adobe, Inc.</option>
-                        <option>Google</option>
-                        <option>YouTube</option>
-                        <option>Apple</option>
-                        <option>Xiomi</option>
-                        <option>ItSpace</option>
-                    </select>
+                    Companys <select name="compani.id">
+                    <option th:each="company: ${companis}" th:text="${company.name} + ' ' " th:value="${company.id}"></option>
+                </select>
+                </label>
+                <br>
+                <br>
+                <label>
+
                 </label>
                 <br>
                 <br>

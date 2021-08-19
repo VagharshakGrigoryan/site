@@ -4,12 +4,11 @@ import com.itSpace.site.model.Compani;
 import com.itSpace.site.repository.CompaniesRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -18,13 +17,14 @@ public class CompController {
     private final CompaniesRepository companiesRepository;
 
     @GetMapping("/company")
-    public String SiteMain(Model model) {
-        Iterable<Compani> companis = companiesRepository.findAll();
-        model.addAttribute("companis", companis);
+    public String SiteMain(ModelMap modelMap) {
+        List<Compani> companis = companiesRepository.findAll();
+        modelMap.addAttribute("companis", companis);
         return "company-main";
     }
+
     @GetMapping("/company/add")
-    public String compAdd(Model model) {
+    public String compAdd() {
         return "company-add";
     }
 
@@ -33,18 +33,13 @@ public class CompController {
     }
 
     @PostMapping("/company/add")
-    public String CompPostAdd(@RequestParam String name,
-                              @RequestParam int size,
-                              @RequestParam String address,
-                              Model model) {
-        Compani compani =
-                new Compani(name,size,address);
+    public String CompPostAdd(@ModelAttribute Compani compani) {
         companiesRepository.save(compani);
         return "redirect:/company";
     }
 
     @GetMapping("/company/{id}")
-    public String CompDetals(@PathVariable(value = "id") long id, Model model) {
+    public String CompDetals(@PathVariable(value = "id") int id, Model model) {
         if (!companiesRepository.existsById(id)) {
             return "redirect:/company";
         }
@@ -55,22 +50,23 @@ public class CompController {
         return "company-detals";
 
     }
+
     @GetMapping("/company/{id}/edit")
-    public String CompEdit(@PathVariable(value = "id") long id, Model model) {
+    public String CompEdit(@PathVariable(value = "id") int id, ModelMap modelMap) {
         if (!companiesRepository.existsById(id)) {
             return "redirect:/company";
         }
         Optional<Compani> comp = companiesRepository.findById(id);
         ArrayList<Compani> result = new ArrayList<>();
         comp.ifPresent(result::add);
-        model.addAttribute("comp", result);
+        modelMap.addAttribute("comp", result);
         return "company-edit";
     }
 
     @PostMapping("/company/{id}/edit")
-    public String CompUpdate(@PathVariable(value = "id") long id,
-                                 @RequestParam String name, @RequestParam int size,
-                                 @RequestParam String address, Model model) {
+    public String CompUpdate(@PathVariable(value = "id") int id,
+                             @RequestParam String name, @RequestParam int size,
+                             @RequestParam String address, ModelMap modelMap) {
         Compani compani = companiesRepository.findById(id).orElseThrow();
         compani.setName(name);
         compani.setSize(size);
@@ -80,7 +76,7 @@ public class CompController {
     }
 
     @PostMapping("/company/{id}/remove")
-    public String CompDelet(@PathVariable(value = "id") long id, Model model) {
+    public String CompDelet(@PathVariable(value = "id") int id, ModelMap modelMap) {
         Compani compani = companiesRepository.findById(id).orElseThrow();
         companiesRepository.delete(compani);
         return "redirect:/company";

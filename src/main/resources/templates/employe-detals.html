@@ -14,13 +14,13 @@
 <div class="container mt-5">
     <h1>Employes</h1>
     <div th:each="el : ${empl}" class="alert alert-info mt-2">
-        Name :  <h3 th:text="${el.name}"></h3>
+        Name : <h3 th:text="${el.name}"></h3>
         Surname : <p th:text="${el.surname}"></p>
         Email : <p th:text="${el.email}"></p>
-        Phone number :  <p th:text="${el.phoneNumber}"></p>
+        Phone number : <p th:text="${el.phoneNumber}"></p>
         Salary : <p th:text="${el.salary}"></p>
         Position : <p th:text="${el.position}"></p>
-        Working place <p th:text="${el.company_id}"></p>
+        Working place : <p th:text="${el.compani.name}"></p>
         <a th:href="'/employe/' + ${el.id} +'/edit'" class="btn btn-warning"> Editing </a>
         <br>
         <br>

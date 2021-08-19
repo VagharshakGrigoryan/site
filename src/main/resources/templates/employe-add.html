@@ -47,14 +47,9 @@
         <br>
         <br>
         <label>
-            Working place <select name="company_id" >
-                <option>Adobe, Inc.</option>
-                <option>Google</option>
-                <option>YouTube</option>
-                <option>Apple</option>
-                <option>Xiomi</option>
-                <option>ItSpace</option>
-            </select>
+      Companys <select name="compani.id">
+          <option th:each="company: ${companis}" th:text="${company.name} + ' ' " th:value="${company.id}"></option>
+      </select>
         </label>
         <br>
         <br>
