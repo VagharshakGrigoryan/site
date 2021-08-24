@@ -21,7 +21,8 @@ public class Employe {
     private String phoneNumber;
     private double salary;
     private String position;
+    private String picUrl;
     @ManyToOne
-    private Compani compani;;
+    private Compani compani;
 
 }
