@@ -14,8 +14,8 @@
 <div class="container mt-5">
     <h1><strong>Employes</strong></h1>
     <div th:each="el : ${employes}" class="alert alert-info mt-2">
-       Name :  <h3 th:text="${el.name}"></h3>
-       Surname : <p th:text="${el.surname}"></p>
+        Name :  <h3 th:text="${el.firstName}"></h3>
+        Surname : <p th:text="${el.lastName}"></p>
 
         <a th:href="'/employe/' + ${el.id}" class="btn btn-warning">Detals</a>
     </div>

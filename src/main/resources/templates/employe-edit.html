@@ -16,19 +16,19 @@
     <div th:each="el : ${emp}" >
         <form method="post">
             <label>
-                <input type="text" name="name" th:value="${el.name}" placeholder="add name"
+                <input type="text" name="firstName" th:value="${el.firstName}" placeholder="add firstName"
                        class="form-control" size="200">
             </label>
             <br>
             <br>
             <label>
-                <input type="text" name="surname" th:value="${el.surname}" placeholder="add name"
+                <input type="text" name="lastName" th:value="${el.lastName}" placeholder="add lastName"
                        class="form-control" size="200">
             </label>
             <br>
             <br>
             <label>
-                <input type="text" name="email" th:value="${el.email}" placeholder="add email"
+                <input type="email" name="email" th:value="${el.email}" placeholder="add email"
                        class="form-control" size="200">
             </label>
             <br>
@@ -51,6 +51,27 @@
                     <input  style="text-align: center" type="text" name="position" th:value="${el.position}" placeholder="add position"
                            class="form-control" >
                 </label>
+                <br>
+                <br>
+                <label>
+                    <input type="password" name="password" placeholder="add password" class="form-control" size="200">
+                </label>
+                <br>
+                <br>
+                User role: <label>
+                <select name="role">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+            </label>
+                <br>
+                <br>
+                User status: <label>
+                <select name="status">
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="BANNED">BANNED</option>
+                </select>
+            </label>
                 <br>
                 <br>
                 <label>

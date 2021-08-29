@@ -2,6 +2,7 @@ package com.itSpace.site.controllers;
 
 import com.itSpace.site.model.Compani;
 import com.itSpace.site.repository.CompaniesRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequiredArgsConstructor
 public class CompController {
 
     private final CompaniesRepository companiesRepository;
@@ -28,9 +30,6 @@ public class CompController {
         return "company-add";
     }
 
-    public CompController(CompaniesRepository companiesRepository) {
-        this.companiesRepository = companiesRepository;
-    }
 
     @PostMapping("/company/add")
     public String CompPostAdd(@ModelAttribute Compani compani) {

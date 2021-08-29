@@ -15,17 +15,22 @@
     <h1  style="text-align: center">Add Employe</h1>
     <form action="/employe/add" method="post">
         <label>
-            <input type="text" name="name" placeholder="add name" class="form-control" size="200">
+            <input type="text" name="firstName" placeholder="add firstName" class="form-control" size="200">
         </label>
         <br>
         <br>
         <label>
-            <input type="text" name="surname" placeholder="add surname" class="form-control" size="200">
+            <input type="text" name="lastName" placeholder="add lastName" class="form-control" size="200">
         </label>
         <br>
         <br>
         <label>
             <input type="email" name="email" placeholder="add email" class="form-control" size="200">
+        </label>
+        <br>
+        <br>
+        <label>
+            <input type="password" name="password" placeholder="add password" class="form-control" size="200">
         </label>
         <br>
         <br>
@@ -47,7 +52,23 @@
         <br>
         <br>
 
-        <label>
+        User role: <label>
+        <select name="role">
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+        </select>
+    </label>
+        <br>
+        <br>
+        User status: <label>
+        <select name="status">
+            <option value="ACTIVE">ACTIVE</option>
+            <option value="BANNED">BANNED</option>
+        </select>
+    </label>
+        <br>
+        <br>
+    <label>
       Companys <select name="compani.id">
           <option th:each="company: ${companis}" th:text="${company.name} + ' ' " th:value="${company.id}"></option>
       </select>

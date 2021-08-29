@@ -2,9 +2,16 @@ package com.itSpace.site.controllers;
 
 import com.itSpace.site.model.Compani;
 import com.itSpace.site.model.Employe;
+import com.itSpace.site.model.Role;
+import com.itSpace.site.model.Status;
 import com.itSpace.site.repository.CompaniesRepository;
 import com.itSpace.site.repository.EmployeesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.itSpace.site.security.CurrentUser;
+import com.itSpace.site.service.CompanyService;
+import com.itSpace.site.service.Empservice;
+import com.itSpace.site.service.impl.EmplServImpl;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +21,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequiredArgsConstructor
 public class EmpController {
 
-    @Autowired
-    private CompaniesRepository companiesRepository;
-    @Autowired
-    private EmployeesRepository employeesRepository;
+    private final CompaniesRepository companiesRepository;
+
+    private final EmployeesRepository employeesRepository;
+    private final Empservice empservice;
+    private final CompanyService companyService;
+
+    private final EmplServImpl emplServ;
 
     @GetMapping("/employe")
-    public String EmpMain(ModelMap modelMap) {
+    public String EmpMain(ModelMap modelMap,CurrentUser currentUser) {
         List<Employe> employes = employeesRepository.findAll();
-        modelMap.addAttribute("employes", employes);
-        return "employes-main";
-    }
+        List<Employe> employ = emplServ.findEmployeeByCompanyId(currentUser.getemploye().getCompani().getId());
+            modelMap.addAttribute("employes", employes);
+            return "employes-main";
+        }
 
     @GetMapping("/employe/add")
     public String empAdd(ModelMap modelMap) {
@@ -37,8 +49,12 @@ public class EmpController {
 
 
     @PostMapping("/employe/add")
-    public String CompAdd(@ModelAttribute Employe employe ) {
+    public String CompAdd(@ModelAttribute Employe employe,
+                          @AuthenticationPrincipal CurrentUser currentUser) {
         employeesRepository.save(employe);
+        Compani compani = companyService.getById(employe.getCompani().getId());
+        empservice.CompAdd(employe, currentUser);
+        companiesRepository.save(compani);
         return "redirect:/employe";
     }
 
@@ -72,17 +88,21 @@ public class EmpController {
 
     @PostMapping("/employe/{id}/edit")
     public String EmpUpdate(@PathVariable(value = "id") int id,
-                            @RequestParam String name, @RequestParam String surname,
-                            @RequestParam String email, @RequestParam String phoneNumber,
+                            @RequestParam String email, @RequestParam String password,
+                            @RequestParam String firstName, @RequestParam String lastName,
                             @RequestParam double salary, @RequestParam String position,
-                            ModelMap modelMap) {
+                            @RequestParam String phoneNumber, @RequestParam Role role,
+                            @RequestParam Status status, ModelMap modelMap) {
         Employe employe = employeesRepository.findById(id).orElseThrow();
-        employe.setName(name);
-        employe.setSurname(surname);
         employe.setEmail(email);
-        employe.setPhoneNumber(phoneNumber);
+        employe.setPassword(password);
+        employe.setFirstName(firstName);
+        employe.setLastName(lastName);
         employe.setSalary(salary);
         employe.setPosition(position);
+        employe.setPhoneNumber(phoneNumber);
+        employe.setRole(role);
+        employe.setStatus(status);
         employeesRepository.save(employe);
         return "redirect:/employe";
     }
@@ -93,6 +113,5 @@ public class EmpController {
         employeesRepository.delete(employe);
         return "redirect:/employe";
     }
+
 }
-
-
