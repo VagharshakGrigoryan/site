@@ -46,11 +46,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/auth/login").permitAll()
                 .defaultSuccessUrl("/auth/home")
                 .and()
+                .rememberMe()
+                .tokenValiditySeconds(2592000)
+                .key("mySecret!")
+                .rememberMeParameter("checkRememberMe")
+                .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout"))
                 .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
+
     }
 
 
