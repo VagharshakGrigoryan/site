@@ -72,7 +72,6 @@ public class EmpController {
 
     }
 
-
     @GetMapping("/employe/{id}/edit")
     public String EmpEdit(@PathVariable(value = "id") int id, ModelMap modelMap) {
         if (!employeesRepository.existsById(id)) {
