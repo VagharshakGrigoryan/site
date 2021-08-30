@@ -25,5 +25,8 @@ public class MainController {
         return "403";
     }
 
-
+    @GetMapping("/UserProfile")
+    public String userProfile(Model model) {
+               return "UserProfile.html";
+    }
 }

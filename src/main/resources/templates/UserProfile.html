@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ly">
+<title>User profile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+<header th:insert="bloks/header :: header"></header>
+
+<body>
+<div class="container">
+  <span th:text="${currentUser.firstName}" ></span>
+  <span th:text="${currentUser.lastName}" ></span>
+  <span th:text="${currentUser.salary}" ></span>
+  <span th:text="${currentUser.position}" ></span>
+  <span th:text="${currentUser.phoneNumber}" ></span>
+  <span th:text="${currentUser.role}" ></span>
+  <span th:text="${currentUser.compani.name}" ></span>
+
+</div>
+<div th:insert="bloks/footer :: footer"></div>
+</body>
+</html>
