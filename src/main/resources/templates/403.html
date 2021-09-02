@@ -7,8 +7,35 @@
 </head>
 <body>
 <header th:insert="bloks/header :: header"></header>
+<main>
 
-You have not access to this page!
-<div th:insert="bloks/footer :: footer"></div>
+    <section class="py-5 text-center container">
+        <main>
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading"><span class="text-muted">You have not access to this page!</span></h2>
+
+                </div>
+                <div class="col-md-5">
+                    <img
+                            src="https://i.stack.imgur.com/wFxrJ.png"
+                            class="featurette-image img-fluid mx-auto"
+                            alt="Responsive image"
+                            width="500"
+                            height="500"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" id="test" width="120" height="120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    </svg>
+
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <div th:insert="bloks/footer :: footer"></div>
+</main>
 </body>
 </html>
+

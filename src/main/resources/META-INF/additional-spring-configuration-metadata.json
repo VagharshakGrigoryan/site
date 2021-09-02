@@ -4,5 +4,17 @@
       "name": "upload.dir",
       "type": "java.lang.String",
       "description": "Description for upload.dir."
-  }
-] }
+    },
+    {
+      "name": ""
+      true
+      &
+      useJDBCCompliantTimezoneShift
+      ",
+      "type": "java.lang.String",
+      "description": "Description for "
+      true
+      &
+      useJDBCCompliantTimezoneShift.
+      "}}
+  ] }
