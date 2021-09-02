@@ -7,14 +7,26 @@
 <header th:insert="bloks/header :: header"></header>
 
 <body>
-<div class="container">
-  <span th:text="${currentUser.firstName}" ></span>
-  <span th:text="${currentUser.lastName}" ></span>
-  <span th:text="${currentUser.salary}" ></span>
-  <span th:text="${currentUser.position}" ></span>
-  <span th:text="${currentUser.phoneNumber}" ></span>
-  <span th:text="${currentUser.role}" ></span>
-  <span th:text="${currentUser.compani.name}" ></span>
+<div class="container mt-5">
+  Name - <span th:text="${currentUser.firstName}" ></span>
+  <br>
+  <br>
+  Surname - <span th:text="${currentUser.lastName}" ></span>
+  <br>
+  <br>
+  Salary - <span th:text="${currentUser.salary}" ></span>
+  <br>
+  <br>
+  Position - <span th:text="${currentUser.position}" ></span>
+  <br>
+  <br>
+  Phone number - <span th:text="${currentUser.phoneNumber}" ></span>
+  <br>
+  <br>
+  Role - <span th:text="${currentUser.role}" ></span>
+  <br>
+  <br>
+ Company name - <span th:text="${currentUser.compani.name}" ></span>
 
 </div>
 <div th:insert="bloks/footer :: footer"></div>

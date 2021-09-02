@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <title> Forum </title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
+</head>
+<body>
+
+<header th:insert="bloks/header :: header"></header>
+
+<div class="container mt-5">
+    <h1>Forums</h1>
+    <div th:each="el : ${posts}" class="alert alert-info mt-2">
+
+
+
+        <h3 th:text="${el.title}"></h3>
+        <p th:text = "${el.createdDate}"></p>
+        <a th:href="@{/blog/{id}(id=${el.id})}" class="btn btn-warning">Detals</a>
+
+    </div>
+
+</div>
+<div th:insert="bloks/footer :: footer"></div>
+</body>
+</html>

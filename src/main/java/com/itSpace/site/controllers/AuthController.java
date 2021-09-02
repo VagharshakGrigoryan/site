@@ -15,6 +15,6 @@ public class AuthController {
 
     @GetMapping("/success")
     public String getSuccessPage() {
-        return "success";
+        return "/main/resources/templates/Exsamples/success.html";
     }
 }
