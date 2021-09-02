@@ -11,20 +11,20 @@
 <body>
 
 
-<header th:insert="bloks/header :: header"></header>
+<header th:include="bloks/header :: header"></header>
 <main>
+
 
     <section class="py-5 text-center container">
         <main>
 
             <div class="row featurette">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading">About us :<span class="text-muted">Description.</span></h2>
+                    <h2 class="featurette-heading"><span
+                            th:text="#{home.About_us}"></span>:<span class="text-muted"><span
+                            th:text="#{home.Description}"></span></span></h2>
                     <p class="lead">
-                        On this site there are two users, an admin and a user.
-                        Here you can add companies and their employees,
-                        and at the same time you can both edit and delete them.
-                        Users can write messages to each other
+                        <span th:text="#{home.On_this_site_here_are_two_users_an_admin_and_a_user_Here_you_can_add_companies_and_their_employees_and_at_the_same_time_you_can_both_edit_and_delete_them_Users_can_write_messages_to_each_other}"></span>
                     </p>
                 </div>
                 <div class="col-md-5">
@@ -43,8 +43,7 @@
             </div>
         </main>
     </section>
-    <div class="album py-5 bg-light">
-    </div>
+
     <div th:insert="bloks/footer :: footer"></div>
 </main>
 </body>

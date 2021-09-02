@@ -20,7 +20,7 @@ public class EmplServImpl implements Empservice {
 
 
     public List<Employe> findEmployeeByCompanyId(int companyId) {
-        return null;
+        return employeesRepository.findEmployeeByCompaniId(companyId);
     }
     public List<Employe> findAll() {
         return employeesRepository.findAll();
@@ -33,6 +33,9 @@ public class EmplServImpl implements Empservice {
         employeesRepository.save(employe);
 
 
+
     }
+
+
     }
 

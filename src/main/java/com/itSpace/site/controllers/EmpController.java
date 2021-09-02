@@ -34,9 +34,8 @@ public class EmpController {
 
     @GetMapping("/employe")
     public String EmpMain(ModelMap modelMap,CurrentUser currentUser) {
-        List<Employe> employes = employeesRepository.findAll();
         List<Employe> employ = emplServ.findEmployeeByCompanyId(currentUser.getemploye().getCompani().getId());
-            modelMap.addAttribute("employes", employes);
+            modelMap.addAttribute("employes", employ);
             return "employes-main";
         }
 
